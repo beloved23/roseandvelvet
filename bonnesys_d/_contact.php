@@ -23,6 +23,7 @@
   
   <!-- /.inner title Start ./-->
   <div class="gap"></div>
+ 
   
   <!-- /.contact Start ./-->
   
@@ -35,9 +36,44 @@
         <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
 <div class="contact">
 <h2>Quick Contact</h2>
-<p class="contact-sub"></p>
+<p class="contact-sub" style="color: green"> 
+  <?php
+if(!empty($_POST['email'])):
+    foreach ($_POST as $key=>$value):       
+${$key}= addslashes($value);  
 
-<form method="post" action="contact-other.php" id="form_contact">
+endforeach;                  
+      // $to="opeyemi.omezie@roseandvelvet.com";
+       $to='opeyemi.omezie@roseandvelvet.com';       
+       // $message="$name just filled in the Request form. His details are:\n\nFull Name:: $surname\n\nCountry: $country\n\nTelephone: $phone\n\nE-mail: $mail\n\nMessage: $prayer";
+       if(isset($email)) {
+            $headers = "MIME-Version: 1.0"."\r\n";
+            $headers .= "Content-type:text/html;charset=iso-8859-1"."\r\n";
+            $headers .= 'From: <info@roseandvelvet.com>'."\r\n";
+            $input=array("@@name","@@country","@@phone","@@email","@@message");
+            $output=array($name,$subject,$phone,$email,$message);
+            $string=file_get_contents('basic.txt',true);
+            $string=str_replace($input,$output,$string);///send message to the admin
+            mail($to,'From the Site (Rose and Velvet Oniline)',$string,$headers);
+          echo "<strong>**Thank you, your Message has been submitted**</strong>";
+       } else {
+          echo "<strong>**There was a problem sending your message**</strong>";
+         }
+    
+  endif;
+
+  
+/*  function alert($message){    
+ 
+ print  "<script type='text/javascript'>alert($message);</script>";
+   
+    
+}
+ */
+
+?></p>
+
+<form method="post" action="" id="form_contact">
 
 <ul class="row">
 <li class="col-lg-6">
@@ -52,8 +88,8 @@
 
 <ul class="row">
 <li class="col-lg-6">
-<label>Website *</label>
-<input name="website" type="text" class="required" placeholder="Website">
+<label>Phone No. *</label>
+<input name="phoneno" type="text" class="required" placeholder="Phone No.">
 </li>
 <li class="col-lg-6">
 <label>Subject *</label>
@@ -65,7 +101,7 @@
 <ul>
 <li>
 <label>Message</label>
-<textarea name="message"  rows="10"></textarea>
+<textarea name="message"  rows="10">Message</textarea>
 </li>
 </ul>
 <ul>
