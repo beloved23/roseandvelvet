@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" type="x-icon" href="images/favicon.png" />
 <meta name="description" content="Roseandvelvet">
-<meta name="author" content="Adegoke Ayanfe">
+<meta name="author" content="https://web.facebook.com/belovedgoal23">
 
 <base href="http://127.0.0.1:81/roseandv/"/>
 <meta name="google-site-verification" content="glDTiLn1FQ3vasWv9tZdWaS7xbDEgLWttpauYjyCAI8" />
